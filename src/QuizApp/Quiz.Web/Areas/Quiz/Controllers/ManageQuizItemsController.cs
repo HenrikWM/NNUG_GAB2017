@@ -11,11 +11,11 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemsController : Controller
     {
-        private static readonly IQuizRepository Repository = new InMemoryQuizRepository();
+        private static readonly IQuizItemRepository ItemRepository = new InMemoryQuizItemRepository();
         
         public ActionResult Index()
         {
-            var items = Repository.GetAll();
+            var items = ItemRepository.GetAll();
 
             var model = items.Select(QuizItemViewModel.MapFrom);
 
@@ -47,7 +47,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 }
             };
 
-            Repository.Add(item);
+            ItemRepository.Add(item);
 
             return RedirectToAction("Index");
         }
@@ -59,7 +59,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = Repository.Get(id);
+            var item = ItemRepository.Get(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = Repository.Get(model.Id);
+            var item = ItemRepository.Get(model.Id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -88,7 +88,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             item.Name = model.Name;
             item.Modified = DateTime.UtcNow;
 
-            Repository.Update(item);
+            ItemRepository.Update(item);
 
             return RedirectToAction("Index");
         }
@@ -100,7 +100,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = Repository.Get(id);
+            var item = ItemRepository.Get(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -115,7 +115,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id")] int id)
         {
-            Repository.Delete(id);
+            ItemRepository.Delete(id);
 
             return RedirectToAction("Index");
         }

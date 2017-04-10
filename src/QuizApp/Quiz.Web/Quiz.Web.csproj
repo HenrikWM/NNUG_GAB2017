@@ -152,7 +152,6 @@
     <Compile Include="Areas\Quiz\Models\QuizItemViewModel.cs" />
     <Compile Include="Areas\Quiz\QuizAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Quiz.DataAccess.Quiz
 {
-    public interface IQuizRepository
+    public interface IQuizItemRepository
     {
         IEnumerable<QuizItem> GetAll();
         QuizItem Get(int id);

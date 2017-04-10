@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Quiz.DataAccess.Quiz
 {
-    public class InMemoryQuizRepository : IQuizRepository
+    public class InMemoryQuizItemRepository : IQuizItemRepository
     {
         public static List<QuizItem> Items { get; set; }
         
-        public InMemoryQuizRepository()
+        public InMemoryQuizItemRepository()
         {
             Items = new List<QuizItem>();
         }
