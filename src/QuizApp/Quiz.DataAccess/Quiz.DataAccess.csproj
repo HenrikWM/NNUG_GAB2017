@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz\InMemoryQuizRepository.cs" />
+    <Compile Include="Quiz\IQuizRepository.cs" />
+    <Compile Include="Quiz\QuizItem.cs" />
+    <Compile Include="Quiz\QuizItemQuestion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
