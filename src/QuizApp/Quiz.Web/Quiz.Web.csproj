@@ -148,7 +148,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Quiz\Controllers\ManageQuizItemQuestionsController.cs" />
     <Compile Include="Areas\Quiz\Controllers\ManageQuizItemsController.cs" />
+    <Compile Include="Areas\Quiz\Models\QuizItemQuestionViewModel.cs" />
     <Compile Include="Areas\Quiz\Models\QuizItemViewModel.cs" />
     <Compile Include="Areas\Quiz\QuizAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -174,6 +176,10 @@
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Index.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Create.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Delete.cshtml" />
+    <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Create.cshtml" />
+    <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Delete.cshtml" />
+    <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Edit.cshtml" />
+    <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Index.cshtml" />
     <None Include="Properties\PublishProfiles\quiz-web.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

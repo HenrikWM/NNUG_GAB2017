@@ -30,6 +30,11 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+        
+        <hr/>
+        @Html.ActionLink("Manage questions for this quiz", "Index", "ManageQuizItemQuestions", new { quizItemId=Model.Id}, null)
+        <br/>
+        <br/>
     </div>
 }
 

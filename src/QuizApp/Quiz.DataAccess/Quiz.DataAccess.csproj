@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz\InMemoryQuizItemQuestionRepository.cs" />
     <Compile Include="Quiz\InMemoryQuizItemRepository.cs" />
+    <Compile Include="Quiz\IQuizItemQuestionRepository.cs" />
     <Compile Include="Quiz\IQuizItemRepository.cs" />
     <Compile Include="Quiz\QuizItem.cs" />
     <Compile Include="Quiz\QuizItemQuestion.cs" />

@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
 using Quiz.Web.Areas.Quiz.Models;
+using WebGrease.Css.Extensions;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemsController : Controller
     {
-        private static readonly IQuizItemRepository ItemRepository = new InMemoryQuizItemRepository();
-        
         public ActionResult Index()
         {
-            var items = ItemRepository.GetAll();
-
+            var items = InMemoryQuizItemRepository.Instance.GetAll();
+            
             var model = items.Select(QuizItemViewModel.MapFrom);
 
             return View(model);
@@ -38,16 +36,13 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             var item = new QuizItem
             {
-                Id = 1234,
+                Id = 1,
                 Created = DateTime.UtcNow,
                 Name = model.Name,
                 Questions = new List<QuizItemQuestion>()
-                {
-                    new QuizItemQuestion()
-                }
             };
 
-            ItemRepository.Add(item);
+            InMemoryQuizItemRepository.Instance.Add(item);
 
             return RedirectToAction("Index");
         }
@@ -59,7 +54,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = ItemRepository.Get(id);
+            var item = InMemoryQuizItemRepository.Instance.Get(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -79,7 +74,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = ItemRepository.Get(model.Id);
+            var item = InMemoryQuizItemRepository.Instance.Get(model.Id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -88,7 +83,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             item.Name = model.Name;
             item.Modified = DateTime.UtcNow;
 
-            ItemRepository.Update(item);
+            InMemoryQuizItemRepository.Instance.Update(item);
 
             return RedirectToAction("Index");
         }
@@ -100,7 +95,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = ItemRepository.Get(id);
+            var item = InMemoryQuizItemRepository.Instance.Get(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -115,8 +110,11 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id")] int id)
         {
-            ItemRepository.Delete(id);
+            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(id);
+            quizItemQuestions.ForEach(o => InMemoryQuizItemQuestionRepository.Instance.Delete(o.Id));
 
+            InMemoryQuizItemRepository.Instance.Delete(id);
+            
             return RedirectToAction("Index");
         }
     }
