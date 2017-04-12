@@ -16,7 +16,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             var items = InMemoryQuizItemRepository.Instance.GetAll();
             
             var model = items.Select(QuizItemViewModel.MapFrom);
-
+            model = model.Select(LoadRelationshipProperties);
             return View(model);
         }
 
@@ -31,12 +31,12 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         {
             if (ModelState.IsValid == false)
             {
+                LoadRelationshipProperties(model);
                 return View(model);
             }
 
             var item = new QuizItem
             {
-                Id = 1,
                 Created = DateTime.UtcNow,
                 Name = model.Name,
                 Questions = new List<QuizItemQuestion>()
@@ -110,12 +110,21 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id")] int id)
         {
-            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(id);
+            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(id).ToList();
             quizItemQuestions.ForEach(o => InMemoryQuizItemQuestionRepository.Instance.Delete(o.Id));
 
             InMemoryQuizItemRepository.Instance.Delete(id);
             
             return RedirectToAction("Index");
+        }
+
+        private QuizItemViewModel LoadRelationshipProperties(QuizItemViewModel model)
+        {
+            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(model.Id);
+
+            model.Questions = quizItemQuestions.Select(QuizItemQuestionViewModel.MapFrom);
+
+            return model;
         }
     }
 }

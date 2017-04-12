@@ -31,7 +31,7 @@ namespace Quiz.DataAccess.Quiz
         }
 
         public static List<QuizItem> Items { get; set; }
-        
+
         public IEnumerable<QuizItem> GetAll()
         {
             return Items;
@@ -44,6 +44,7 @@ namespace Quiz.DataAccess.Quiz
 
         public void Add(QuizItem model)
         {
+            model.Id = GetNextId();
             Items.Add(model);
         }
 
@@ -61,6 +62,11 @@ namespace Quiz.DataAccess.Quiz
                 return;
 
             Items.Remove(existingItem);
+        }
+
+        private int GetNextId()
+        {
+            return GetAll().Any() ? GetAll().Max(o => o.Id) + 1 : 1;
         }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model Quiz.Web.Areas.Quiz.Models.QuizTakingViewModel
+
+@{
+    ViewBag.Title = Model.QuizItemName + " in progress...";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("End", "QuizTaking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Answer the questions as correctly and quickly as possible. Good luck @Model.ParticipantName!</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <p class="text-muted">Started at: <b>@Model.Created.ToShortDateString() @Model.Created.ToShortTimeString()</b></p>
+            </div>
+        </div>
+        
+        @for (int i = 0; i < Model.Questions.Count; i++)
+        {
+            @Html.EditorFor(m => m.Questions[i], "_QuestionWithAnswersInput")
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="End quiz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

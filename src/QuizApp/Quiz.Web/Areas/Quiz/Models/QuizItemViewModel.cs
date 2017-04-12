@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Quiz.Web.Areas.Quiz.Models
@@ -18,14 +19,14 @@ namespace Quiz.Web.Areas.Quiz.Models
                 Id = model.Id,
                 Name = model.Name,
                 Created = model.Created.ToShortDateString() + " " + model.Created.ToShortTimeString(),
-                Modified = model.Modified?.ToShortDateString() + " " + model.Modified?.ToShortTimeString(),
-                Questions = model.Questions.Select(QuizItemQuestionViewModel.MapFrom)
+                Modified = model.Modified?.ToShortDateString() + " " + model.Modified?.ToShortTimeString()
             };
         }
         
         [DisplayName("Id")]
         public int Id { get; set; }
         
+        [Required]
         [DisplayName("Name")]
         public string Name { get; set; }
         

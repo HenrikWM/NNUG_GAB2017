@@ -4,7 +4,6 @@ using System.Net;
 using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
 using Quiz.Web.Areas.Quiz.Models;
-using WebGrease.Css.Extensions;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
@@ -60,12 +59,12 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         {
             if (ModelState.IsValid == false)
             {
+                LoadRelationshipProperties(model);
                 return View(model);
             }
 
             var item = new QuizItemQuestion
             {
-                Id = 1,
                 QuizItemId = model.QuizItemId,
                 Created = DateTime.UtcNow,
                 Question = model.Question,
@@ -81,7 +80,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             InMemoryQuizItemQuestionRepository.Instance.Add(item);
 
-            return RedirectToAction("Index", new { quizItemId=model.QuizItemId });
+            return RedirectToAction("Index", new { model.QuizItemId });
         }
 
         public ActionResult Edit(int id)
@@ -113,6 +112,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         {
             if (ModelState.IsValid == false)
             {
+                LoadRelationshipProperties(model);
                 return View(model);
             }
 
@@ -135,7 +135,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             InMemoryQuizItemQuestionRepository.Instance.Update(item);
 
-            return RedirectToAction("Index", new { quizItemId = model.QuizItemId });
+            return RedirectToAction("Index", new { model.QuizItemId });
         }
 
         public ActionResult Delete(int id)

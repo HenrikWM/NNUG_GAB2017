@@ -106,7 +106,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to list", "Index")
+    @Html.ActionLink("Back to questions", "Index", "ManageQuizItemQuestions", new { quizItemId=Model.QuizItemId }, null)
 </div>
 
 @section Scripts {

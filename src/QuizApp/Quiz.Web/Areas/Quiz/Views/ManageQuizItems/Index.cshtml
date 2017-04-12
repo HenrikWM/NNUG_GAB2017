@@ -48,6 +48,8 @@
                 @Html.DisplayFor(modelItem => item.Modified)
             </td>
             <td>
+                <b>@Html.ActionLink("Start quiz", "Start", "QuizTaking", new { quizItemId=item.Id }, null)</b> |
+                @Html.ActionLink("Questions", "Index", "ManageQuizItemQuestions", new { quizItemId=item.Id }, null) |
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>

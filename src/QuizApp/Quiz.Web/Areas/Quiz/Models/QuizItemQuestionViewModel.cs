@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {
@@ -27,6 +28,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         [DisplayName("Id")]
         public int Id { get; set; }
 
+        [Required]
         [DisplayName("Question")]
         public string Question { get; set; }
 
@@ -41,9 +43,11 @@ namespace Quiz.Web.Areas.Quiz.Models
         [DisplayName("Quiz")]
         public string QuizItemName { get; set; }
 
+        [Required]
         [DisplayName("Answer 1")]
         public string AnswerAlternative1 { get; set; }
 
+        [Required]
         [DisplayName("Answer 2")]
         public string AnswerAlternative2 { get; set; }
 

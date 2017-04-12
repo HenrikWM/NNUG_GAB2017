@@ -41,12 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz\InMemoryQuizItemQuestionAnswerRepository.cs" />
     <Compile Include="Quiz\InMemoryQuizItemQuestionRepository.cs" />
     <Compile Include="Quiz\InMemoryQuizItemRepository.cs" />
+    <Compile Include="Quiz\InMemoryQuizTakingRepository.cs" />
+    <Compile Include="Quiz\IQuizItemQuestionAnswerRepository.cs" />
     <Compile Include="Quiz\IQuizItemQuestionRepository.cs" />
     <Compile Include="Quiz\IQuizItemRepository.cs" />
+    <Compile Include="Quiz\IQuizTakingRepository.cs" />
     <Compile Include="Quiz\QuizItem.cs" />
     <Compile Include="Quiz\QuizItemQuestion.cs" />
+    <Compile Include="Quiz\QuizItemQuestionAnswer.cs" />
+    <Compile Include="Quiz\QuizTaking.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

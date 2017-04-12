@@ -150,8 +150,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Quiz\Controllers\ManageQuizItemQuestionsController.cs" />
     <Compile Include="Areas\Quiz\Controllers\ManageQuizItemsController.cs" />
+    <Compile Include="Areas\Quiz\Controllers\QuizTakingController.cs" />
+    <Compile Include="Areas\Quiz\Models\QuestionWithAnswersInputViewModel.cs" />
     <Compile Include="Areas\Quiz\Models\QuizItemQuestionViewModel.cs" />
     <Compile Include="Areas\Quiz\Models\QuizItemViewModel.cs" />
+    <Compile Include="Areas\Quiz\Models\QuizTakingCompleteViewModel.cs" />
+    <Compile Include="Areas\Quiz\Models\QuizTakingViewModel.cs" />
     <Compile Include="Areas\Quiz\QuizAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +184,10 @@
     <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Delete.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Edit.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItemQuestions\Index.cshtml" />
+    <Content Include="Areas\Quiz\Views\QuizTaking\Start.cshtml" />
+    <Content Include="Areas\Quiz\Views\QuizTaking\InProgress.cshtml" />
+    <Content Include="Areas\Quiz\Views\Shared\EditorTemplates\_QuestionWithAnswersInput.cshtml" />
+    <Content Include="Areas\Quiz\Views\QuizTaking\QuizCompleted.cshtml" />
     <None Include="Properties\PublishProfiles\quiz-web.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -208,7 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Quiz\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
