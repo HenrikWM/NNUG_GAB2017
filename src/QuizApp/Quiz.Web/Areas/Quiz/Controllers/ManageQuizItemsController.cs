@@ -38,8 +38,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             var item = new QuizItem
             {
                 Created = DateTime.UtcNow,
-                Name = model.Name,
-                Questions = new List<QuizItemQuestion>()
+                Name = model.Name
             };
 
             InMemoryQuizItemRepository.Instance.Add(item);

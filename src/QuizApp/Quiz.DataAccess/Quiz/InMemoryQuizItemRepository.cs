@@ -42,10 +42,12 @@ namespace Quiz.DataAccess.Quiz
             return Items.FirstOrDefault(o => o.Id == id);
         }
 
-        public void Add(QuizItem model)
+        public int Add(QuizItem model)
         {
             model.Id = GetNextId();
             Items.Add(model);
+
+            return model.Id;
         }
 
         public void Update(QuizItem model)

@@ -71,7 +71,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult End([Bind(Include = "Id,QuizItemId,ParticipantName,Questions")] QuizTakingViewModel model)
+        public ActionResult End([Bind(Include = "Id,ParticipantName,QuestionsWithAnswers")] QuizTakingViewModel model)
         {
             if (ModelState.IsValid == false)
             {
@@ -89,16 +89,14 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             
             InMemoryQuizTakingRepository.Instance.Update(quizTaking);
 
-            foreach (var questionWithAnswersInputViewModel in model.Questions)
+            foreach (var questionWithAnswersInputViewModel in model.QuestionsWithAnswers)
             {
                 var quizItemQuestionAnswer =
                     new QuizItemQuestionAnswer
                     {
                         QuizItemQuestionId = questionWithAnswersInputViewModel.QuizItemQuestionId,
-                        Answer1 = questionWithAnswersInputViewModel.Answer1,
-                        Answer2 = questionWithAnswersInputViewModel.Answer2,
-                        Answer3 = questionWithAnswersInputViewModel.Answer3,
-                        Answer4 = questionWithAnswersInputViewModel.Answer4
+                        QuizTakingId = quizTaking.Id,
+                        UserSpecifiedAnswer = questionWithAnswersInputViewModel.UserSpecifiedAnswer
                     };
 
                 InMemoryQuizItemQuestionAnswerRepository.Instance.Add(quizItemQuestionAnswer);
@@ -137,7 +135,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(model.QuizItemId);
 
-            model.Questions = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFrom).ToList();
+            model.QuestionsWithAnswers = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFrom).ToList();
         }
 
         private void LoadRelationshipProperties(QuizTakingCompleteViewModel model)

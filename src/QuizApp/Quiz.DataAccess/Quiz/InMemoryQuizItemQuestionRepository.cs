@@ -48,10 +48,12 @@ namespace Quiz.DataAccess.Quiz
             return GetAll().Where(o => o.QuizItemId == quizItemId);
         }
 
-        public void Add(QuizItemQuestion model)
+        public int Add(QuizItemQuestion model)
         {
             model.Id = GetNextId();
             Items.Add(model);
+
+            return model.Id;
         }
 
         public void Update(QuizItemQuestion model)

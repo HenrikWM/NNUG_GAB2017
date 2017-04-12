@@ -9,6 +9,5 @@ namespace Quiz.DataAccess.Quiz
         public string Name { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Modified { get; set; }
-        public IEnumerable<QuizItemQuestion> Questions { get; set; }
     }
 }

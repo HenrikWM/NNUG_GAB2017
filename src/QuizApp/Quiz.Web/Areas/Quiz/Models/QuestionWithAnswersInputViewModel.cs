@@ -21,6 +21,13 @@ namespace Quiz.Web.Areas.Quiz.Models
 
         public string Question { get; set; }
 
+        public string UserSpecifiedAnswer { get; set; }
+
+        public QuestionWithAnswersInputViewModel()
+        {
+            UserSpecifiedAnswer = string.Empty;
+        }
+
         public static QuestionWithAnswersInputViewModel MapFrom(QuizItemQuestion model)
         {
             return new QuestionWithAnswersInputViewModel

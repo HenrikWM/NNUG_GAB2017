@@ -157,10 +157,13 @@
     <Compile Include="Areas\Quiz\Models\QuizTakingCompleteViewModel.cs" />
     <Compile Include="Areas\Quiz\Models\QuizTakingViewModel.cs" />
     <Compile Include="Areas\Quiz\QuizAreaRegistration.cs" />
+    <Compile Include="Areas\Scores\Controllers\HighScoresController.cs" />
+    <Compile Include="Areas\Scores\ScoresAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InMemoryStateLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +191,8 @@
     <Content Include="Areas\Quiz\Views\QuizTaking\InProgress.cshtml" />
     <Content Include="Areas\Quiz\Views\Shared\EditorTemplates\_QuestionWithAnswersInput.cshtml" />
     <Content Include="Areas\Quiz\Views\QuizTaking\QuizCompleted.cshtml" />
+    <Content Include="Areas\Scores\Views\web.config" />
+    <Content Include="Areas\Scores\Views\HighScores\Index.cshtml" />
     <None Include="Properties\PublishProfiles\quiz-web.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -216,6 +221,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Scores\Models\" />
+    <Folder Include="Areas\Scores\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

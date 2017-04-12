@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Well done @Model.ParticipantName</h4>
+        <h4>Well done @Model.ParticipantName!</h4>
         <hr />
         
         <!--TODO: Calculate score aync via js api call -->
@@ -20,12 +20,6 @@
         
         <!--TODO: Wait for diploma generation and then display link and image, via js api call -->
         <a href=""><img src="" alt="Your diploma" /></a>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Start" class="btn btn-default" />
-            </div>
-        </div>
     </div>
 }
 

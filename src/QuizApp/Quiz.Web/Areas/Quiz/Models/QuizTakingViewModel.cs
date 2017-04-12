@@ -24,7 +24,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         [DisplayName("Ended at")]
         public DateTime? Ended { get; set; }
 
-        public IList<QuestionWithAnswersInputViewModel> Questions { get; set; }
+        public IList<QuestionWithAnswersInputViewModel> QuestionsWithAnswers { get; set; }
 
         public static QuizTakingViewModel MapFrom(DataAccess.Quiz.QuizItem model)
         {
@@ -39,7 +39,7 @@ namespace Quiz.Web.Areas.Quiz.Models
             return new QuizTakingViewModel
             {
                 Id = model.Id,
-                QuizItemId = model.Id,
+                QuizItemId = model.QuizItemId,
                 Created = model.Created,
                 Ended = model.Ended,
                 ParticipantName = model.ParticipantName,

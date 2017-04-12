@@ -12,7 +12,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         {
             return new QuizTakingCompleteViewModel
             {
-                QuizItemId = model.Id,
+                QuizItemId = model.QuizItemId,
                 ParticipantName = model.ParticipantName
             };
         }

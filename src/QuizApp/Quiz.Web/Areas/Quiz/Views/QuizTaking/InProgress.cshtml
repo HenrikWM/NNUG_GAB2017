@@ -13,19 +13,27 @@
 
     <div class="form-horizontal">
         <h4>Answer the questions as correctly and quickly as possible. Good luck @Model.ParticipantName!</h4>
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <p class="text-muted">Started at: <b>@Model.Created.ToShortDateString() @Model.Created.ToShortTimeString()</b></p>
             </div>
         </div>
         
-        @for (int i = 0; i < Model.Questions.Count; i++)
+        <hr />
+
+        @for (int i = 0; i < Model.QuestionsWithAnswers.Count; i++)
         {
-            @Html.EditorFor(m => m.Questions[i], "_QuestionWithAnswersInput")
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <h4>Question @(i + 1)</h4>
+                </div>
+            </div>
+            @Html.EditorFor(m => m.QuestionsWithAnswers[i], "_QuestionWithAnswersInput")
         }
 
         <div class="form-group">

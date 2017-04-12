@@ -7,7 +7,7 @@ namespace Quiz.DataAccess.Quiz
         IEnumerable<QuizItemQuestion> GetAll();
         QuizItemQuestion Get(int id);
         IEnumerable<QuizItemQuestion> GetQuestionsForQuizItem(int quizItemId);
-        void Add(QuizItemQuestion model);
+        int Add(QuizItemQuestion model);
         void Update(QuizItemQuestion model);
         void Delete(int id);
     }
