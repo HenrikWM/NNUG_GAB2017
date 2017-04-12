@@ -1,19 +1,20 @@
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Quiz.DataAccess.Quiz
+namespace Quiz.DataAccess.Quiz.InMemory
 {
-    public sealed class InMemoryQuizTakingRepository : IQuizTakingRepository
+    public sealed class InMemoryQuizItemQuestionRepository : IQuizItemQuestionRepository
     {
-        private static volatile InMemoryQuizTakingRepository _instance;
+        private static volatile InMemoryQuizItemQuestionRepository _instance;
         private static readonly object SyncRoot = new object();
 
-        private InMemoryQuizTakingRepository()
+        private InMemoryQuizItemQuestionRepository()
         {
-            Items = new List<QuizTaking>();
+            Items = new List<QuizItemQuestion>();
         }
 
-        public static InMemoryQuizTakingRepository Instance
+        public static InMemoryQuizItemQuestionRepository Instance
         {
             get
             {
@@ -22,7 +23,7 @@ namespace Quiz.DataAccess.Quiz
                     lock (SyncRoot)
                     {
                         if (_instance == null)
-                            _instance = new InMemoryQuizTakingRepository();
+                            _instance = new InMemoryQuizItemQuestionRepository();
                     }
                 }
 
@@ -30,19 +31,24 @@ namespace Quiz.DataAccess.Quiz
             }
         }
 
-        public static List<QuizTaking> Items { get; set; }
+        public static List<QuizItemQuestion> Items { get; set; }
         
-        public IEnumerable<QuizTaking> GetAll()
+        public IEnumerable<QuizItemQuestion> GetAll()
         {
             return Items;
         }
 
-        public QuizTaking Get(int id)
+        public QuizItemQuestion Get(int id)
         {
             return Items.FirstOrDefault(o => o.Id == id);
         }
 
-        public int Add(QuizTaking model)
+        public IEnumerable<QuizItemQuestion> GetQuestionsForQuizItem(int quizItemId)
+        {
+            return GetAll().Where(o => o.QuizItemId == quizItemId);
+        }
+
+        public int Add(QuizItemQuestion model)
         {
             model.Id = GetNextId();
             Items.Add(model);
@@ -50,7 +56,7 @@ namespace Quiz.DataAccess.Quiz
             return model.Id;
         }
 
-        public void Update(QuizTaking model)
+        public void Update(QuizItemQuestion model)
         {
             Delete(model.Id);
 

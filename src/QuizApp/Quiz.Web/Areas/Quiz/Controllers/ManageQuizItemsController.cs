@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
+using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
-using WebGrease.Css.Extensions;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemsController : Controller
     {
+        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+
         public ActionResult Index()
         {
-            var items = InMemoryQuizItemRepository.Instance.GetAll();
+            var quizItems = _quizItemRepository.GetAll();
             
-            var model = items.Select(QuizItemViewModel.MapFrom);
+            var model = quizItems.Select(QuizItemViewModel.MapFrom);
             model = model.Select(LoadRelationshipProperties);
             return View(model);
         }
@@ -35,13 +37,13 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = new QuizItem
+            var quizItem = new QuizItem
             {
                 Created = DateTime.UtcNow,
                 Name = model.Name
             };
 
-            InMemoryQuizItemRepository.Instance.Add(item);
+            _quizItemRepository.Add(quizItem);
 
             return RedirectToAction("Index");
         }
@@ -53,13 +55,13 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = InMemoryQuizItemRepository.Instance.Get(id);
-            if (item == null)
+            var quizItem = _quizItemRepository.Get(id);
+            if (quizItem == null)
             {
                 return HttpNotFound();
             }
 
-            var model = QuizItemViewModel.MapFrom(item);
+            var model = QuizItemViewModel.MapFrom(quizItem);
 
             return View(model);
         }
@@ -73,16 +75,16 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = InMemoryQuizItemRepository.Instance.Get(model.Id);
-            if (item == null)
+            var quizItem = _quizItemRepository.Get(model.Id);
+            if (quizItem == null)
             {
                 return HttpNotFound();
             }
 
-            item.Name = model.Name;
-            item.Modified = DateTime.UtcNow;
+            quizItem.Name = model.Name;
+            quizItem.Modified = DateTime.UtcNow;
 
-            InMemoryQuizItemRepository.Instance.Update(item);
+            _quizItemRepository.Update(quizItem);
 
             return RedirectToAction("Index");
         }
@@ -94,7 +96,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = InMemoryQuizItemRepository.Instance.Get(id);
+            var item = _quizItemRepository.Get(id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -109,17 +111,14 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id")] int id)
         {
-            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(id).ToList();
-            quizItemQuestions.ForEach(o => InMemoryQuizItemQuestionRepository.Instance.Delete(o.Id));
-
-            InMemoryQuizItemRepository.Instance.Delete(id);
+            _quizItemRepository.Delete(id);
             
             return RedirectToAction("Index");
         }
 
         private QuizItemViewModel LoadRelationshipProperties(QuizItemViewModel model)
         {
-            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(model.Id);
+            var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(model.Id);
 
             model.Questions = quizItemQuestions.Select(QuizItemQuestionViewModel.MapFrom);
 

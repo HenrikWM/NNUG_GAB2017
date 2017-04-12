@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Quiz.DataAccess.Quiz
+namespace Quiz.DataAccess.Quiz.InMemory
 {
     public sealed class InMemoryQuizItemRepository : IQuizItemRepository
     {

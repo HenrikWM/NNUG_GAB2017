@@ -3,12 +3,18 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
+using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class QuizTakingController : Controller
     {
+        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly InMemoryQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
+        private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = InMemoryQuizItemQuestionAnswerRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+
         public ActionResult Start(int quizItemId)
         {
             if (quizItemId == 0)
@@ -16,7 +22,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(quizItemId);
+            var quizItem = _quizItemRepository.Get(quizItemId);
             if (quizItem == null)
             {
                 return HttpNotFound();
@@ -38,14 +44,14 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = new QuizTaking
+            var quizTaking = new QuizTaking
             {
                 QuizItemId = model.QuizItemId,
                 Created = DateTime.UtcNow,
                 ParticipantName = model.ParticipantName
             };
 
-            var id = InMemoryQuizTakingRepository.Instance.Add(item);
+            var id = _quizTakingRepository.Add(quizTaking);
 
             return RedirectToAction("InProgress", new { id });
         }
@@ -57,7 +63,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var quizTaking = InMemoryQuizTakingRepository.Instance.Get(id);
+            var quizTaking = _quizTakingRepository.Get(id);
             if (quizTaking == null)
             {
                 return HttpNotFound();
@@ -79,15 +85,15 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View("InProgress", model);
             }
 
-            var quizTaking = InMemoryQuizTakingRepository.Instance.Get(model.Id);
+            var quizTaking = _quizTakingRepository.Get(model.Id);
             if (quizTaking == null)
             {
                 return HttpNotFound();
             }
 
             quizTaking.Ended = DateTime.UtcNow;
-            
-            InMemoryQuizTakingRepository.Instance.Update(quizTaking);
+
+            _quizTakingRepository.Update(quizTaking);
 
             foreach (var questionWithAnswersInputViewModel in model.QuestionsWithAnswers)
             {
@@ -99,7 +105,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                         UserSpecifiedAnswer = questionWithAnswersInputViewModel.UserSpecifiedAnswer
                     };
 
-                InMemoryQuizItemQuestionAnswerRepository.Instance.Add(quizItemQuestionAnswer);
+                _quizItemQuestionAnswerRepository.Add(quizItemQuestionAnswer);
             }
 
             return RedirectToAction("QuizCompleted", new { model.Id });
@@ -112,7 +118,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var quizTaking = InMemoryQuizTakingRepository.Instance.Get(id);
+            var quizTaking = _quizTakingRepository.Get(id);
             if (quizTaking == null)
             {
                 return HttpNotFound();
@@ -129,18 +135,18 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
         private void LoadRelationshipProperties(QuizTakingViewModel model)
         {
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(model.QuizItemId);
+            var quizItem = _quizItemRepository.Get(model.QuizItemId);
 
             model.QuizItemName = quizItem.Name;
 
-            var quizItemQuestions = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(model.QuizItemId);
+            var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(model.QuizItemId);
 
             model.QuestionsWithAnswers = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFrom).ToList();
         }
 
         private void LoadRelationshipProperties(QuizTakingCompleteViewModel model)
         {
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(model.QuizItemId);
+            var quizItem = _quizItemRepository.Get(model.QuizItemId);
 
             model.QuizItemName = quizItem.Name;
         }

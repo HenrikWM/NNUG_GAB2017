@@ -3,12 +3,16 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
+using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemQuestionsController : Controller
     {
+        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+
         public ActionResult Index(int quizItemId)
         {
             if (quizItemId == 0)
@@ -16,15 +20,15 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(quizItemId);
+            var quizItem = _quizItemRepository.Get(quizItemId);
             if (quizItem == null)
             {
                 return HttpNotFound();
             }
 
-            var items = InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(quizItem.Id);
+            var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(quizItem.Id);
 
-            var model = items.Select(QuizItemQuestionViewModel.MapFrom);
+            var model = quizItemQuestions.Select(QuizItemQuestionViewModel.MapFrom);
             model = model.Select(LoadRelationshipProperties);
             
             return View(model);
@@ -37,7 +41,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(quizItemId);
+            var quizItem = _quizItemRepository.Get(quizItemId);
             if (quizItem == null)
             {
                 return HttpNotFound();
@@ -53,8 +57,10 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(
             [Bind(Include = "QuizItemId,Question," +
-                            "AnswerAlternative1,AnswerAlternative2,AnswerAlternative3,AnswerAlternative4," +
-                            "IsAnswerAlternative1Correct,IsAnswerAlternative2Correct,IsAnswerAlternative3Correct,IsAnswerAlternative4Correct")]
+                            "AnswerAlternative1,AnswerAlternative2," +
+                            "AnswerAlternative3,AnswerAlternative4," +
+                            "IsAnswerAlternative1Correct,IsAnswerAlternative2Correct," +
+                            "IsAnswerAlternative3Correct,IsAnswerAlternative4Correct")]
             QuizItemQuestionViewModel model)
         {
             if (ModelState.IsValid == false)
@@ -63,7 +69,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = new QuizItemQuestion
+            var quizItemQuestion = new QuizItemQuestion
             {
                 QuizItemId = model.QuizItemId,
                 Created = DateTime.UtcNow,
@@ -78,7 +84,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 IsAnswerAlternative4Correct = model.IsAnswerAlternative4Correct
             };
 
-            InMemoryQuizItemQuestionRepository.Instance.Add(item);
+            _quizItemQuestionRepository.Add(quizItemQuestion);
 
             return RedirectToAction("Index", new { model.QuizItemId });
         }
@@ -90,13 +96,13 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = InMemoryQuizItemQuestionRepository.Instance.Get(id);
-            if (item == null)
+            var quizItemQuestion = _quizItemQuestionRepository.Get(id);
+            if (quizItemQuestion == null)
             {
                 return HttpNotFound();
             }
 
-            var model = QuizItemQuestionViewModel.MapFrom(item);
+            var model = QuizItemQuestionViewModel.MapFrom(quizItemQuestion);
             LoadRelationshipProperties(model);
 
             return View(model);
@@ -106,8 +112,10 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
             [Bind(Include = "Id,QuizItemId,Question," +
-                            "AnswerAlternative1,AnswerAlternative2,AnswerAlternative3,AnswerAlternative4," +
-                            "IsAnswerAlternative1Correct,IsAnswerAlternative2Correct,IsAnswerAlternative3Correct,IsAnswerAlternative4Correct")]
+                            "AnswerAlternative1,AnswerAlternative2," +
+                            "AnswerAlternative3,AnswerAlternative4," +
+                            "IsAnswerAlternative1Correct,IsAnswerAlternative2Correct," +
+                            "IsAnswerAlternative3Correct,IsAnswerAlternative4Correct")]
             QuizItemQuestionViewModel model)
         {
             if (ModelState.IsValid == false)
@@ -116,24 +124,24 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return View(model);
             }
 
-            var item = InMemoryQuizItemQuestionRepository.Instance.Get(model.Id);
-            if (item == null)
+            var quizItemQuestion = _quizItemQuestionRepository.Get(model.Id);
+            if (quizItemQuestion == null)
             {
                 return HttpNotFound();
             }
 
-            item.Modified = DateTime.UtcNow;
-            item.Question = model.Question;
-            item.AnswerAlternative1 = model.AnswerAlternative1;
-            item.AnswerAlternative2 = model.AnswerAlternative2;
-            item.AnswerAlternative3 = model.AnswerAlternative3;
-            item.AnswerAlternative4 = model.AnswerAlternative4;
-            item.IsAnswerAlternative1Correct = model.IsAnswerAlternative1Correct;
-            item.IsAnswerAlternative2Correct = model.IsAnswerAlternative2Correct;
-            item.IsAnswerAlternative3Correct = model.IsAnswerAlternative3Correct;
-            item.IsAnswerAlternative4Correct = model.IsAnswerAlternative4Correct;
+            quizItemQuestion.Modified = DateTime.UtcNow;
+            quizItemQuestion.Question = model.Question;
+            quizItemQuestion.AnswerAlternative1 = model.AnswerAlternative1;
+            quizItemQuestion.AnswerAlternative2 = model.AnswerAlternative2;
+            quizItemQuestion.AnswerAlternative3 = model.AnswerAlternative3;
+            quizItemQuestion.AnswerAlternative4 = model.AnswerAlternative4;
+            quizItemQuestion.IsAnswerAlternative1Correct = model.IsAnswerAlternative1Correct;
+            quizItemQuestion.IsAnswerAlternative2Correct = model.IsAnswerAlternative2Correct;
+            quizItemQuestion.IsAnswerAlternative3Correct = model.IsAnswerAlternative3Correct;
+            quizItemQuestion.IsAnswerAlternative4Correct = model.IsAnswerAlternative4Correct;
 
-            InMemoryQuizItemQuestionRepository.Instance.Update(item);
+            _quizItemQuestionRepository.Update(quizItemQuestion);
 
             return RedirectToAction("Index", new { model.QuizItemId });
         }
@@ -145,13 +153,13 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var item = InMemoryQuizItemQuestionRepository.Instance.Get(id);
-            if (item == null)
+            var quizItemQuestion = _quizItemQuestionRepository.Get(id);
+            if (quizItemQuestion == null)
             {
                 return HttpNotFound();
             }
 
-            var model = QuizItemQuestionViewModel.MapFrom(item);
+            var model = QuizItemQuestionViewModel.MapFrom(quizItemQuestion);
             LoadRelationshipProperties(model);
 
             return View(model);
@@ -161,14 +169,14 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id,QuizItemId")] int id, int quizItemId)
         {
-            InMemoryQuizItemQuestionRepository.Instance.Delete(id);
+            _quizItemQuestionRepository.Delete(id);
 
             return RedirectToAction("Index", new { quizItemId });
         }
 
         private QuizItemQuestionViewModel LoadRelationshipProperties(QuizItemQuestionViewModel model)
         {
-            var quizItem = InMemoryQuizItemRepository.Instance.Get(model.QuizItemId);
+            var quizItem = _quizItemRepository.Get(model.QuizItemId);
 
             model.QuizItemName = quizItem.Name;
 
