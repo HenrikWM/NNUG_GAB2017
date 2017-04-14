@@ -42,6 +42,11 @@ namespace Quiz.DataAccess.Quiz.InMemory
             return Items.FirstOrDefault(o => o.Id == id);
         }
 
+        public IEnumerable<QuizTaking> GetTakingsForQuizItem(int quizItemId)
+        {
+            return GetAll().Where(o => o.QuizItemId == quizItemId);
+        }
+
         public int Add(QuizTaking model)
         {
             model.Id = GetNextId();
@@ -62,7 +67,7 @@ namespace Quiz.DataAccess.Quiz.InMemory
             var existingItem = Get(id);
             if (existingItem == null)
                 return;
-
+            
             Items.Remove(existingItem);
         }
         

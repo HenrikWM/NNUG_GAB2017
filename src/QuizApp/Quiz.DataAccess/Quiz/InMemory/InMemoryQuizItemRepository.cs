@@ -63,6 +63,15 @@ namespace Quiz.DataAccess.Quiz.InMemory
             if (existingItem == null)
                 return;
 
+            // Cascading delete of foreign keys
+            var quizItemQuestions =
+                InMemoryQuizItemQuestionRepository.Instance.GetQuestionsForQuizItem(existingItem.Id).ToList();
+            quizItemQuestions.ForEach(o => InMemoryQuizItemQuestionRepository.Instance.Delete(o.Id));
+
+            var quizTakings =
+                InMemoryQuizTakingRepository.Instance.GetTakingsForQuizItem(existingItem.Id).ToList();
+            quizTakings.ForEach(o => InMemoryQuizTakingRepository.Instance.Delete(o.Id));
+            
             Items.Remove(existingItem);
         }
 

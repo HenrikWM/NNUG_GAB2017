@@ -52,7 +52,16 @@ namespace Quiz.DataAccess.Quiz.InMemory
             model.Id = GetNextId();
             Items.Add(model);
         }
-        
+
+        public void Delete(int id)
+        {
+            var existingItem = Get(id);
+            if (existingItem == null)
+                return;
+
+            Items.Remove(existingItem);
+        }
+
         private int GetNextId()
         {
             return GetAll().Any() ? GetAll().Max(o => o.Id) + 1 : 1;

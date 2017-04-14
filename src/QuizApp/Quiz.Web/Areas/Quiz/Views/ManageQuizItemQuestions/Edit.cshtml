@@ -26,15 +26,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Question, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Question, new {@class = "control-label col-md-2 required"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Question, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Question, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnswerAlternative1, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AnswerAlternative1, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnswerAlternative1, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AnswerAlternative1, "", new { @class = "text-danger" })
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsAnswerAlternative1Correct, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsAnswerAlternative1Correct, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.CheckBoxFor(model => model.IsAnswerAlternative1Correct, new { @class = "checkbox" })
                 @Html.ValidationMessageFor(model => model.IsAnswerAlternative1Correct, "", new { @class = "text-danger" })
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnswerAlternative2, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AnswerAlternative2, new { @class = "control-label col-md-2 required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnswerAlternative2, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AnswerAlternative2, "", new { @class = "text-danger" })

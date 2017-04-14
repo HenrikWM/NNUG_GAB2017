@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Quiz.DataAccess.Quiz.InMemory
@@ -68,6 +67,11 @@ namespace Quiz.DataAccess.Quiz.InMemory
             var existingItem = Get(id);
             if (existingItem == null)
                 return;
+            
+            // Cascading delete of foreign keys
+            var quizItemQuestionAnswers = 
+                InMemoryQuizItemQuestionAnswerRepository.Instance.GetQuestionAnswersForQuizItemQuestion(existingItem.Id).ToList();
+            quizItemQuestionAnswers.ForEach(o => InMemoryQuizItemQuestionAnswerRepository.Instance.Delete(o.Id));
 
             Items.Remove(existingItem);
         }
