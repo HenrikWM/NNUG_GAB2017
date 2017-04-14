@@ -238,6 +238,10 @@
       <Project>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</Project>
       <Name>Quiz.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\QuizApp.Core\Quiz.Core.csproj">
+      <Project>{2DBAB805-E02D-495A-B8EF-4356AF285E60}</Project>
+      <Name>Quiz.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

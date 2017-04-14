@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Quiz.Core.Quiz;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {
@@ -12,7 +13,7 @@ namespace Quiz.Web.Areas.Quiz.Models
             Questions = new List<QuizItemQuestionViewModel>();
         }
 
-        public static QuizItemViewModel MapFromDataModel(DataAccess.Quiz.QuizItem model)
+        public static QuizItemViewModel MapFromDataModel(QuizItem model)
         {
             return new QuizItemViewModel
             {

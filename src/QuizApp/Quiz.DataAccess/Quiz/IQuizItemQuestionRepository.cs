@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Quiz.Core.Quiz;
 
 namespace Quiz.DataAccess.Quiz
 {

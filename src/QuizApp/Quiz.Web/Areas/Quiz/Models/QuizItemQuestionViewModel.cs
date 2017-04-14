@@ -1,11 +1,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Quiz.Core.Quiz;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {
     public class QuizItemQuestionViewModel
     {
-        public static QuizItemQuestionViewModel MapFromDataModel(DataAccess.Quiz.QuizItemQuestion model)
+        public static QuizItemQuestionViewModel MapFromDataModel(QuizItemQuestion model)
         {
             return new QuizItemQuestionViewModel
             {

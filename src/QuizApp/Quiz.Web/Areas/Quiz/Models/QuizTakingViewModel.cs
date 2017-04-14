@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Quiz.Core.Quiz;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {
@@ -28,7 +29,7 @@ namespace Quiz.Web.Areas.Quiz.Models
 
         public IList<QuestionWithAnswersInputViewModel> QuestionsWithAnswers { get; set; }
         
-        public static QuizTakingViewModel MapFromDataModel(DataAccess.Quiz.QuizTaking model)
+        public static QuizTakingViewModel MapFromDataModel(QuizTaking model)
         {
             return new QuizTakingViewModel
             {

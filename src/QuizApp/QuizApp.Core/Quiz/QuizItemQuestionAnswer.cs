@@ -1,4 +1,4 @@
-namespace Quiz.DataAccess.Quiz
+namespace Quiz.Core.Quiz
 {
     public class QuizItemQuestionAnswer
     {

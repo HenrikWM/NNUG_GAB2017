@@ -1,4 +1,5 @@
 ﻿using System;
+using Quiz.Core.Quiz;
 using Quiz.DataAccess.Quiz;
 using Quiz.DataAccess.Quiz.InMemory;
 

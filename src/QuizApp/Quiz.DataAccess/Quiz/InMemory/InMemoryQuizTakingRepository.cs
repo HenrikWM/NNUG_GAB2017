@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Quiz.Core.Quiz;
 
 namespace Quiz.DataAccess.Quiz.InMemory
 {
