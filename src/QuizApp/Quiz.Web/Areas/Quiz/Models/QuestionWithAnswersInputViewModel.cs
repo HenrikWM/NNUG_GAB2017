@@ -40,5 +40,15 @@ namespace Quiz.Web.Areas.Quiz.Models
                 Answer4 = model.AnswerAlternative4
             };
         }
+
+        public static QuizItemQuestionAnswer MapToDataModel(QuestionWithAnswersInputViewModel viewModel, int quizTakingId)
+        {
+            return new QuizItemQuestionAnswer
+            {
+                QuizItemQuestionId = viewModel.QuizItemQuestionId,
+                QuizTakingId = quizTakingId,
+                UserSpecifiedAnswer = viewModel.UserSpecifiedAnswer
+            };
+        }
     }
 }

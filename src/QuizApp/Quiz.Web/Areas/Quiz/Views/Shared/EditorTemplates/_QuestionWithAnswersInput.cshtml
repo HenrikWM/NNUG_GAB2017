@@ -17,12 +17,18 @@
             <label class="btn btn-default">
                 @Html.RadioButtonFor(model => model.UserSpecifiedAnswer, Model.Answer2, new { id = Model.Answer2 }) @Model.Answer2
             </label>
-            <label class="btn btn-default">
-                @Html.RadioButtonFor(model => model.UserSpecifiedAnswer, Model.Answer3, new { id = Model.Answer3 }) @Model.Answer3
-            </label>
-            <label class="btn btn-default">
-                @Html.RadioButtonFor(model => model.UserSpecifiedAnswer, Model.Answer4, new { id = Model.Answer4 }) @Model.Answer4
-            </label>
+            @if (Model.Answer3 != null)
+            {
+                <label class="btn btn-default">
+                    @Html.RadioButtonFor(model => model.UserSpecifiedAnswer, Model.Answer3, new { id = Model.Answer3 }) @Model.Answer3
+                </label>
+            }
+            @if (Model.Answer4 != null)
+            {
+                <label class="btn btn-default">
+                    @Html.RadioButtonFor(model => model.UserSpecifiedAnswer, Model.Answer4, new { id = Model.Answer4 }) @Model.Answer4
+                </label>   
+            }
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {
@@ -12,6 +13,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         [DisplayName("Quiz")]
         public string QuizItemName { get; set; }
 
+        [Required]
         [DisplayName("Your name")]
         public string ParticipantName { get; set; }
 
@@ -25,15 +27,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         public DateTime? Ended { get; set; }
 
         public IList<QuestionWithAnswersInputViewModel> QuestionsWithAnswers { get; set; }
-
-        public static QuizTakingViewModel MapFromDataModel(DataAccess.Quiz.QuizItem model)
-        {
-            return new QuizTakingViewModel
-            {
-                QuizItemId = model.Id
-            };
-        }
-
+        
         public static QuizTakingViewModel MapFromDataModel(DataAccess.Quiz.QuizTaking model)
         {
             return new QuizTakingViewModel

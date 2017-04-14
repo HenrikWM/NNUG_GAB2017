@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Quiz.DataAccess.Quiz;
 using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
+using WebGrease.Css.Extensions;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
@@ -28,7 +29,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
             
-            var model = QuizTakingViewModel.MapFromDataModel(quizItem);
+            var model = new QuizTakingViewModel { QuizItemId = quizItemId };
             LoadRelationshipProperties(model);
 
             return View("Start", model);
@@ -95,19 +96,15 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             _quizTakingRepository.Update(quizTaking);
 
-            foreach (var questionWithAnswersInputViewModel in model.QuestionsWithAnswers)
-            {
-                var quizItemQuestionAnswer =
-                    new QuizItemQuestionAnswer
-                    {
-                        QuizItemQuestionId = questionWithAnswersInputViewModel.QuizItemQuestionId,
-                        QuizTakingId = quizTaking.Id,
-                        UserSpecifiedAnswer = questionWithAnswersInputViewModel.UserSpecifiedAnswer
-                    };
+            var questionsWithAnswersDataModels = model.QuestionsWithAnswers.Select(
+                o => QuestionWithAnswersInputViewModel.MapToDataModel(o, quizTaking.Id)
+            );
 
-                _quizItemQuestionAnswerRepository.Add(quizItemQuestionAnswer);
-            }
-
+            questionsWithAnswersDataModels.ForEach(
+                quizItemQuestionAnswerDataModel =>
+                _quizItemQuestionAnswerRepository.Add(quizItemQuestionAnswerDataModel)
+            );
+            
             return RedirectToAction("QuizCompleted", new { model.Id });
         }
         
@@ -136,11 +133,9 @@ namespace Quiz.Web.Areas.Quiz.Controllers
         private void LoadRelationshipProperties(QuizTakingViewModel model)
         {
             var quizItem = _quizItemRepository.Get(model.QuizItemId);
-
             model.QuizItemName = quizItem.Name;
 
             var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(model.QuizItemId);
-
             model.QuestionsWithAnswers = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFromDataModel).ToList();
         }
 
