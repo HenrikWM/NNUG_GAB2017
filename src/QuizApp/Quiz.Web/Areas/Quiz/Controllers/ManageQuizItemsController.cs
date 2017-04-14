@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Quiz.Core.Quiz;
-using Quiz.DataAccess.Quiz;
+using Quiz.DataAccess.Abstractions.Quiz;
 using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
 

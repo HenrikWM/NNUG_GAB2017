@@ -234,6 +234,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Quiz.DataAccess.Abstractions\Quiz.DataAccess.Abstractions.csproj">
+      <Project>{C4F71F86-894C-45DF-9E2C-F334B09C2098}</Project>
+      <Name>Quiz.DataAccess.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Quiz.DataAccess\Quiz.DataAccess.csproj">
       <Project>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</Project>
       <Name>Quiz.DataAccess</Name>

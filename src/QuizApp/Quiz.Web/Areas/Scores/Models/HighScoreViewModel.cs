@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Quiz.Core.Quiz;
-using Quiz.DataAccess.Quiz;
 
 namespace Quiz.Web.Areas.Scores.Models
 {

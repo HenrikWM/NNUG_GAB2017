@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Quiz.DataAccess.Quiz;
+using Quiz.DataAccess.Abstractions.Quiz;
 using Quiz.DataAccess.Quiz.InMemory;
 using Quiz.Web.Areas.Scores.Models;
 using WebGrease.Css.Extensions;

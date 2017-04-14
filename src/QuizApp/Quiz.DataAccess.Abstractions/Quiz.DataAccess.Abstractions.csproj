@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</ProjectGuid>
+    <ProjectGuid>{C4F71F86-894C-45DF-9E2C-F334B09C2098}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quiz.DataAccess</RootNamespace>
-    <AssemblyName>Quiz.DataAccess</AssemblyName>
+    <RootNamespace>Quiz.DataAccess.Abstractions</RootNamespace>
+    <AssemblyName>Quiz.DataAccess.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,16 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quiz\InMemory\InMemoryQuizItemQuestionAnswerRepository.cs" />
-    <Compile Include="Quiz\InMemory\InMemoryQuizItemQuestionRepository.cs" />
-    <Compile Include="Quiz\InMemory\InMemoryQuizItemRepository.cs" />
-    <Compile Include="Quiz\InMemory\InMemoryQuizTakingRepository.cs" />
+    <Compile Include="Quiz\IQuizItemQuestionAnswerRepository.cs" />
+    <Compile Include="Quiz\IQuizItemQuestionRepository.cs" />
+    <Compile Include="Quiz\IQuizItemRepository.cs" />
+    <Compile Include="Quiz\IQuizTakingRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quiz.DataAccess.Abstractions\Quiz.DataAccess.Abstractions.csproj">
-      <Project>{C4F71F86-894C-45DF-9E2C-F334B09C2098}</Project>
-      <Name>Quiz.DataAccess.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QuizApp.Core\Quiz.Core.csproj">
       <Project>{2DBAB805-E02D-495A-B8EF-4356AF285E60}</Project>
       <Name>Quiz.Core</Name>

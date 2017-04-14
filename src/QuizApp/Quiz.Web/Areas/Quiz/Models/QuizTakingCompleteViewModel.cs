@@ -1,5 +1,4 @@
 using Quiz.Core.Quiz;
-using Quiz.DataAccess.Quiz;
 
 namespace Quiz.Web.Areas.Quiz.Models
 {

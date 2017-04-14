@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Quiz.Core.Quiz;
 
-namespace Quiz.DataAccess.Quiz
+namespace Quiz.DataAccess.Abstractions.Quiz
 {
     public interface IQuizItemQuestionRepository
     {
