@@ -158,6 +158,7 @@
     <Compile Include="Areas\Quiz\Models\QuizTakingViewModel.cs" />
     <Compile Include="Areas\Quiz\QuizAreaRegistration.cs" />
     <Compile Include="Areas\Scores\Controllers\HighScoresController.cs" />
+    <Compile Include="Areas\Scores\Models\HighScoreViewModel.cs" />
     <Compile Include="Areas\Scores\ScoresAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,7 +222,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Scores\Models\" />
     <Folder Include="Areas\Scores\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>

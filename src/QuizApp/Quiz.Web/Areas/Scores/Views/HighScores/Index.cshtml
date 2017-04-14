@@ -1,1 +1,52 @@
-﻿
+﻿@model IEnumerable<Quiz.Web.Areas.Scores.Models.HighScoreViewModel>
+
+@{
+    ViewBag.Title = "High scores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quiz high scores</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuizItemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuizItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParticipantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ended)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuizItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuizItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParticipantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ended)
+            </td>
+            <td>                
+            </td>
+        </tr>
+    }
+</table>
