@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -164,7 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InMemoryStateLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +244,10 @@
     <ProjectReference Include="..\Quiz.DataAccess.Abstractions\Quiz.DataAccess.Abstractions.csproj">
       <Project>{C4F71F86-894C-45DF-9E2C-F334B09C2098}</Project>
       <Name>Quiz.DataAccess.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quiz.DataAccess.Ef\Quiz.DataAccess.Ef.csproj">
+      <Project>{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}</Project>
+      <Name>Quiz.DataAccess.Ef</Name>
     </ProjectReference>
     <ProjectReference Include="..\Quiz.DataAccess\Quiz.DataAccess.csproj">
       <Project>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</Project>

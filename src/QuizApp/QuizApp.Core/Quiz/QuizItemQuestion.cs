@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Quiz.Core.Quiz
 {
@@ -10,6 +11,8 @@ namespace Quiz.Core.Quiz
         public DateTime? Modified { get; set; }
 
         public int QuizItemId { get; set; }
+        public QuizItem QuizItem { get; set; }
+        public ICollection<QuizItemQuestionAnswer> QuizItemQuestionAnswers { get; set; }
 
         public string AnswerAlternative1 { get; set; }
         public string AnswerAlternative2 { get; set; }

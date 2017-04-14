@@ -1,12 +1,11 @@
 ﻿using System;
 using Quiz.Core.Quiz;
-using Quiz.DataAccess.Quiz.InMemory;
 
-namespace Quiz.Web
+namespace Quiz.DataAccess.Quiz.InMemory
 {
-    public static class InMemoryStateLoader
+    public static class InMemoryDbConfiguration
     {
-        public static void Load()
+        public static void Seed()
         {
             var created = DateTime.UtcNow.AddDays(-1);
             var ended = DateTime.UtcNow.AddDays(-1).AddMinutes(2);

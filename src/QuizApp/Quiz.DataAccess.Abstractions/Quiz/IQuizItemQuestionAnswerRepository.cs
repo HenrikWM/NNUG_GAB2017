@@ -8,7 +8,7 @@ namespace Quiz.DataAccess.Abstractions.Quiz
         IEnumerable<QuizItemQuestionAnswer> GetAll();
         QuizItemQuestionAnswer Get(int id);
         IEnumerable<QuizItemQuestionAnswer> GetQuestionAnswersForQuizItemQuestion(int quizItemQuestionId);
-        void Delete(int id);
         void Add(QuizItemQuestionAnswer model);
+        void Delete(int id);
     }
 }

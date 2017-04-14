@@ -4,15 +4,18 @@ using System.Net;
 using System.Web.Mvc;
 using Quiz.Core.Quiz;
 using Quiz.DataAccess.Abstractions.Quiz;
-using Quiz.DataAccess.Quiz.InMemory;
+using Quiz.DataAccess.Ef.Quiz.SqlDb;
 using Quiz.Web.Areas.Quiz.Models;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemQuestionsController : Controller
     {
-        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
-        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+        //private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
+        
+        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
 
         public ActionResult Index(int quizItemId)
         {
