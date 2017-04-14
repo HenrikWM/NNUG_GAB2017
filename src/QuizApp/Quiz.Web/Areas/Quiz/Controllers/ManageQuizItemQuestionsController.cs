@@ -28,7 +28,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(quizItem.Id);
 
-            var model = quizItemQuestions.Select(QuizItemQuestionViewModel.MapFrom);
+            var model = quizItemQuestions.Select(QuizItemQuestionViewModel.MapFromDataModel);
             model = model.Select(LoadRelationshipProperties);
             
             return View(model);
@@ -102,7 +102,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
 
-            var model = QuizItemQuestionViewModel.MapFrom(quizItemQuestion);
+            var model = QuizItemQuestionViewModel.MapFromDataModel(quizItemQuestion);
             LoadRelationshipProperties(model);
 
             return View(model);
@@ -159,7 +159,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
 
-            var model = QuizItemQuestionViewModel.MapFrom(quizItemQuestion);
+            var model = QuizItemQuestionViewModel.MapFromDataModel(quizItemQuestion);
             LoadRelationshipProperties(model);
 
             return View(model);

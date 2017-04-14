@@ -12,7 +12,7 @@ namespace Quiz.Web.Areas.Quiz.Models
             Questions = new List<QuizItemQuestionViewModel>();
         }
 
-        public static QuizItemViewModel MapFrom(DataAccess.Quiz.QuizItem model)
+        public static QuizItemViewModel MapFromDataModel(DataAccess.Quiz.QuizItem model)
         {
             return new QuizItemViewModel
             {

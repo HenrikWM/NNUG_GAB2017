@@ -26,7 +26,7 @@ namespace Quiz.Web.Areas.Quiz.Models
 
         public IList<QuestionWithAnswersInputViewModel> QuestionsWithAnswers { get; set; }
 
-        public static QuizTakingViewModel MapFrom(DataAccess.Quiz.QuizItem model)
+        public static QuizTakingViewModel MapFromDataModel(DataAccess.Quiz.QuizItem model)
         {
             return new QuizTakingViewModel
             {
@@ -34,7 +34,7 @@ namespace Quiz.Web.Areas.Quiz.Models
             };
         }
 
-        public static QuizTakingViewModel MapFrom(DataAccess.Quiz.QuizTaking model)
+        public static QuizTakingViewModel MapFromDataModel(DataAccess.Quiz.QuizTaking model)
         {
             return new QuizTakingViewModel
             {

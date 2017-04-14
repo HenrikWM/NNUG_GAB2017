@@ -28,7 +28,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
             
-            var model = QuizTakingViewModel.MapFrom(quizItem);
+            var model = QuizTakingViewModel.MapFromDataModel(quizItem);
             LoadRelationshipProperties(model);
 
             return View("Start", model);
@@ -69,7 +69,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
 
-            var model = QuizTakingViewModel.MapFrom(quizTaking);
+            var model = QuizTakingViewModel.MapFromDataModel(quizTaking);
             LoadRelationshipProperties(model);
 
             return View("InProgress", model);
@@ -124,7 +124,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
                 return HttpNotFound();
             }
 
-            var model = QuizTakingCompleteViewModel.MapFrom(quizTaking);
+            var model = QuizTakingCompleteViewModel.MapFromDataModel(quizTaking);
             LoadRelationshipProperties(model);
 
             // TODO:
@@ -141,7 +141,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 
             var quizItemQuestions = _quizItemQuestionRepository.GetQuestionsForQuizItem(model.QuizItemId);
 
-            model.QuestionsWithAnswers = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFrom).ToList();
+            model.QuestionsWithAnswers = quizItemQuestions.Select(QuestionWithAnswersInputViewModel.MapFromDataModel).ToList();
         }
 
         private void LoadRelationshipProperties(QuizTakingCompleteViewModel model)

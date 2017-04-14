@@ -8,7 +8,7 @@ namespace Quiz.Web.Areas.Quiz.Models
         public string QuizItemName { get; set; }
         public int QuizItemId { get; set; }
 
-        public static QuizTakingCompleteViewModel MapFrom(QuizTaking model)
+        public static QuizTakingCompleteViewModel MapFromDataModel(QuizTaking model)
         {
             return new QuizTakingCompleteViewModel
             {

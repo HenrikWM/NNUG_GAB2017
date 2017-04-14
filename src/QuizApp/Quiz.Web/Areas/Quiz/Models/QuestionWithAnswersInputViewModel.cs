@@ -28,7 +28,7 @@ namespace Quiz.Web.Areas.Quiz.Models
             UserSpecifiedAnswer = string.Empty;
         }
 
-        public static QuestionWithAnswersInputViewModel MapFrom(QuizItemQuestion model)
+        public static QuestionWithAnswersInputViewModel MapFromDataModel(QuizItemQuestion model)
         {
             return new QuestionWithAnswersInputViewModel
             {
