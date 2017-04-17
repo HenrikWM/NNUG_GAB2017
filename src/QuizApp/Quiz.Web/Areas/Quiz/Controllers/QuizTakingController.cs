@@ -7,22 +7,23 @@ using Quiz.DataAccess.Abstractions.Quiz;
 using Quiz.DataAccess.Ef.Quiz.SqlDb;
 using Quiz.Web.Areas.Quiz.Models;
 using WebGrease.Css.Extensions;
+using Quiz.DataAccess.Quiz.InMemory;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class QuizTakingController : Controller
     {
-        //private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
-        private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
+        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        //private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
 
-        //private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
-        private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
+        private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
+        //private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
 
-        //private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = InMemoryQuizItemQuestionAnswerRepository.Instance;
-        private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = new SqlDbQuizItemQuestionAnswerRepository();
+        private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = InMemoryQuizItemQuestionAnswerRepository.Instance;
+        //private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = new SqlDbQuizItemQuestionAnswerRepository();
 
-        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
-        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
 
         public ActionResult Start(int quizItemId)
         {
