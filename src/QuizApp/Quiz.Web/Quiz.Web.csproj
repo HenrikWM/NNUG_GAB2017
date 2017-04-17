@@ -183,9 +183,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Areas\Quiz\Views\web.config" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Edit.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Index.cshtml" />
