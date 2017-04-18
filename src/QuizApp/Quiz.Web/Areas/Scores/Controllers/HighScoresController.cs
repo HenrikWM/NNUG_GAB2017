@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Quiz.DataAccess.Abstractions.Quiz;
 using Quiz.DataAccess.Ef.Quiz.SqlDb;
-using Quiz.DataAccess.Quiz.InMemory;
+using Quiz.DataAccess.InMemory.Quiz.InMemory;
 using Quiz.Web.Areas.Scores.Models;
 using WebGrease.Css.Extensions;
 

@@ -5,9 +5,9 @@ using System.Web.Mvc;
 using Quiz.Core.Quiz;
 using Quiz.DataAccess.Abstractions.Quiz;
 using Quiz.DataAccess.Ef.Quiz.SqlDb;
+using Quiz.DataAccess.InMemory.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
 using WebGrease.Css.Extensions;
-using Quiz.DataAccess.Quiz.InMemory;
 
 namespace Quiz.Web.Areas.Quiz.Controllers
 {

@@ -7,8 +7,8 @@
     <ProjectGuid>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quiz.DataAccess</RootNamespace>
-    <AssemblyName>Quiz.DataAccess</AssemblyName>
+    <RootNamespace>Quiz.DataAccess.InMemory</RootNamespace>
+    <AssemblyName>Quiz.DataAccess.InMemory</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

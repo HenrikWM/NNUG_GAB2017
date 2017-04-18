@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Quiz.DataAccess.Ef;
-using Quiz.DataAccess.Quiz.InMemory;
+using Quiz.DataAccess.InMemory.Quiz.InMemory;
 
 namespace Quiz.Web
 {
