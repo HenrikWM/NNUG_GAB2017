@@ -37,8 +37,6 @@
             </div>
         </div>
 
-        <br/>
-        <br/>
         @Html.ActionLink("View high scores", "Index", "HighScores", new { area="Scores" }, null)
     </div>
 }
@@ -47,21 +45,17 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script type="text/javascript">
-        //var diplomaFileName = '@Model.ParticipantName' + '.jpg';
-        //var diplomaFileUrl = '@ConfigurationManager.AppSettings["QuizAppBlobContainerUrl"]' + '/' + diplomaFileName;
-        var diplomaFileUrl = 'https://imbo.vgc.no/users/vgno/images/7461db658a1722d68310fe8cfccbf2b0?t%5B0%5D=crop%3Awidth%3D800%2Cheight%3D600%2Cx%3D0%2Cy%3D0&t%5B1%5D=maxSize%3Awidth%3D990%2Cheight%3D0&t%5B2%5D=resize%3Awidth%3D990&accessToken=0b3477f852b1ed8c9a33c123d1c0a18ec66691bb91a6d3013cf3bee241941a33';
-        var calculatedScore = 1234;
-
-        setTimeout(onDiplomaGenerated, 2000);
-        setTimeout(onScoreCalculated, 2000);
+        //var expectedDiplomaFileUrl = '@ConfigurationManager.AppSettings["QuizAppBlobContainerUrl"]/@Model.ParticipantName' + '.jpg';
+        var expectedDiplomaFileUrl = '@Url.Content("~/Content/Images/dummy-diploma.jpeg")'; // TODO: Remove local testing file
+        var calculatedScoreValue = 12345;
 
         function onDiplomaGenerated() {
             $('.diploma-panel .panel-title').text('Download your diploma');
             $('.diploma-panel').removeClass('panel-default');
             $('.diploma-panel').addClass('panel-success');
 
-            $('.diploma-panel .image-link').attr('href', diplomaFileUrl);
-            $('.diploma-panel .diploma-image').attr('src', diplomaFileUrl);
+            $('.diploma-panel .image-link').attr('href', expectedDiplomaFileUrl);
+            $('.diploma-panel .diploma-image').attr('src', expectedDiplomaFileUrl);
         }
 
         function onScoreCalculated() {
@@ -69,8 +63,49 @@
             $('.score-panel').removeClass('panel-default');
             $('.score-panel').addClass('panel-success');
 
-            $('.score-panel .score-value').text(calculatedScore);
+            $('.score-panel .score-value').text(calculatedScoreValue);
             $('.score-panel .score-image').hide();
         }
+
+        function resilientResourceLoader(attemptNumber, stopConditionFunc, func) {
+            var maxRetryAttempts = 3;
+            if (attemptNumber > maxRetryAttempts || stopConditionFunc() === true) return;
+
+            var delayInMs = Math.pow(3, attemptNumber) * 1000; // Exponential retry: 3^1=3000ms, 3^2=9000ms, 3^3=27000ms
+            console.log('Loading resource, attempt number ' + attemptNumber + ' and waiting ' + delayInMs + ' ms before next retry.');
+
+            func();
+
+            setTimeout(function() {
+                resilientResourceLoader(++attemptNumber, stopConditionFunc, func);
+            }, delayInMs);
+        }
+
+        function loadDiplomaImage() {
+            $.ajax({
+                url: expectedDiplomaFileUrl,
+                cache: false,
+                processData: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success: function() {
+                    onDiplomaGenerated();
+                },
+                error: function(result) {
+                    console.log('Error loading diploma image: ' + result.status + ' - ' + result.statusText);
+                }
+            });
+        }
+
+        function loadScore() {
+            // TODO: implement me
+            onScoreCalculated();
+        }
+
+        $(document).ready(function() {
+            resilientResourceLoader(0, function () { return $('.diploma-panel').hasClass('panel-success') }, loadDiplomaImage);
+            resilientResourceLoader(0, function () { return $('.score-panel').hasClass('panel-success') }, loadScore);
+        });
     </script>
 }
