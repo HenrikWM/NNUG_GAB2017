@@ -1,4 +1,5 @@
-﻿@model Quiz.Web.Areas.Quiz.Models.QuizTakingCompleteViewModel
+﻿@using System.Configuration
+@model Quiz.Web.Areas.Quiz.Models.QuizTakingCompleteViewModel
 
 @{
     ViewBag.Title = "You completed the " + Model.QuizItemName + "!";
@@ -14,19 +15,62 @@
     <div class="form-horizontal">
         <h4>Well done @Model.ParticipantName!</h4>
         <hr />
-        
-        <!--TODO: Calculate score aync via js api call -->
-        <p class="text-success">Your score: ???</p>
-        
-        <!--TODO: Wait for diploma generation and then display link and image, via js api call -->
-        <a href=""><img src="" alt="Your diploma" /></a>
-        
+
+        <div class="panel panel-default score-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Calculating your score...</h3>
+            </div>
+            <div class="panel-body">
+                <img class="score-image" src="~/Content/Images/spinner.gif" />
+                <p class="text-primary score-value"></p>
+            </div>
+        </div>
+
+        <div class="panel panel-default diploma-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Generating your diploma...</h3>
+            </div>
+            <div class="panel-body">
+                <a href="#" class="image-link">
+                    <img class="diploma-image" src="~/Content/Images/spinner.gif" />
+                </a>
+            </div>
+        </div>
+
         <br/>
         <br/>
-        @Html.ActionLink("Go to high scores", "Index", "HighScores", new { area="Scores" }, null)
+        @Html.ActionLink("View high scores", "Index", "HighScores", new { area="Scores" }, null)
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        //var diplomaFileName = '@Model.ParticipantName' + '.jpg';
+        //var diplomaFileUrl = '@ConfigurationManager.AppSettings["QuizAppBlobContainerUrl"]' + '/' + diplomaFileName;
+        var diplomaFileUrl = 'https://imbo.vgc.no/users/vgno/images/7461db658a1722d68310fe8cfccbf2b0?t%5B0%5D=crop%3Awidth%3D800%2Cheight%3D600%2Cx%3D0%2Cy%3D0&t%5B1%5D=maxSize%3Awidth%3D990%2Cheight%3D0&t%5B2%5D=resize%3Awidth%3D990&accessToken=0b3477f852b1ed8c9a33c123d1c0a18ec66691bb91a6d3013cf3bee241941a33';
+        var calculatedScore = 1234;
+
+        setTimeout(onDiplomaGenerated, 2000);
+        setTimeout(onScoreCalculated, 2000);
+
+        function onDiplomaGenerated() {
+            $('.diploma-panel .panel-title').text('Download your diploma');
+            $('.diploma-panel').removeClass('panel-default');
+            $('.diploma-panel').addClass('panel-success');
+
+            $('.diploma-panel .image-link').attr('href', diplomaFileUrl);
+            $('.diploma-panel .diploma-image').attr('src', diplomaFileUrl);
+        }
+
+        function onScoreCalculated() {
+            $('.score-panel .panel-title').text('Your score');
+            $('.score-panel').removeClass('panel-default');
+            $('.score-panel').addClass('panel-success');
+
+            $('.score-panel .score-value').text(calculatedScore);
+            $('.score-panel .score-image').hide();
+        }
+    </script>
 }
