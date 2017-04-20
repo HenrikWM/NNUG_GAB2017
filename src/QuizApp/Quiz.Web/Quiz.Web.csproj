@@ -177,15 +177,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\dummy-diploma.jpeg" />
+    <Content Include="Content\Images\spinner.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Areas\Quiz\Views\web.config" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Edit.cshtml" />
     <Content Include="Areas\Quiz\Views\ManageQuizItems\Index.cshtml" />
@@ -249,9 +248,9 @@
       <Project>{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}</Project>
       <Name>Quiz.DataAccess.Ef</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quiz.DataAccess\Quiz.DataAccess.csproj">
+    <ProjectReference Include="..\Quiz.DataAccess\Quiz.DataAccess.InMemory.csproj">
       <Project>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</Project>
-      <Name>Quiz.DataAccess</Name>
+      <Name>Quiz.DataAccess.InMemory</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuizApp.Core\Quiz.Core.csproj">
       <Project>{2DBAB805-E02D-495A-B8EF-4356AF285E60}</Project>

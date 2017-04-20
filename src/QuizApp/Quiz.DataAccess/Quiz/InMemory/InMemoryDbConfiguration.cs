@@ -1,7 +1,7 @@
 ﻿using System;
 using Quiz.Core.Quiz;
 
-namespace Quiz.DataAccess.Quiz.InMemory
+namespace Quiz.DataAccess.InMemory.Quiz.InMemory
 {
     public static class InMemoryDbConfiguration
     {

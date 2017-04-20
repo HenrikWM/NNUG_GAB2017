@@ -36,3 +36,17 @@ textarea {
     color: red;
     margin-left: 5px;
 }
+
+.diploma-panel .panel-body, 
+.score-panel .panel-body {
+    text-align: center;
+}
+
+.diploma-panel .diploma-image,
+.score-panel .score-image {
+    width: 30%;
+}
+
+.score-panel .score-value {
+    font-size: 3em;
+}

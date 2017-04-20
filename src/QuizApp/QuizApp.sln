@@ -5,13 +5,26 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.Web", "Quiz.Web\Quiz.Web.csproj", "{CCAB4D04-9F0B-4FCF-AD01-2DF66AA10A99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess", "Quiz.DataAccess\Quiz.DataAccess.csproj", "{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess.InMemory", "Quiz.DataAccess\Quiz.DataAccess.InMemory.csproj", "{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.Core", "QuizApp.Core\Quiz.Core.csproj", "{2DBAB805-E02D-495A-B8EF-4356AF285E60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess.Abstractions", "Quiz.DataAccess.Abstractions\Quiz.DataAccess.Abstractions.csproj", "{C4F71F86-894C-45DF-9E2C-F334B09C2098}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess.Ef", "Quiz.DataAccess.Ef\Quiz.DataAccess.Ef.csproj", "{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Application", "10 - Application", "{CC662C68-6B0B-452A-A54C-D0DCBF90BC31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Deploy", "99 - Deploy", "{3D6BBB5B-A4A6-4D2B-9C6F-A9C0818BC9DD}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\deploy\deploy.ps1 = ..\..\deploy\deploy.ps1
+		..\..\deploy\parameters.json = ..\..\deploy\parameters.json
+		..\..\deploy\template.json = ..\..\deploy\template.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Domain", "20 - Domain", "{DBA455D6-EEE6-4A3F-97A6-60DA314D7772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 - Infrastructure", "30 - Infrastructure", "{45C52119-7AB2-498B-84DD-560BCEC223BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +55,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CCAB4D04-9F0B-4FCF-AD01-2DF66AA10A99} = {CC662C68-6B0B-452A-A54C-D0DCBF90BC31}
+		{1F2A31E3-15C3-4B35-B676-3DAFB308A85A} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
+		{2DBAB805-E02D-495A-B8EF-4356AF285E60} = {DBA455D6-EEE6-4A3F-97A6-60DA314D7772}
+		{C4F71F86-894C-45DF-9E2C-F334B09C2098} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
 	EndGlobalSection
 EndGlobal

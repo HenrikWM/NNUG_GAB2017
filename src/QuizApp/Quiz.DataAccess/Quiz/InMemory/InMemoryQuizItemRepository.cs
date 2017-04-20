@@ -3,7 +3,7 @@ using System.Linq;
 using Quiz.Core.Quiz;
 using Quiz.DataAccess.Abstractions.Quiz;
 
-namespace Quiz.DataAccess.Quiz.InMemory
+namespace Quiz.DataAccess.InMemory.Quiz.InMemory
 {
     public sealed class InMemoryQuizItemRepository : IQuizItemRepository
     {
