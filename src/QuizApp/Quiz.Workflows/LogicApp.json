@@ -56,32 +56,15 @@
         "definition": {
           "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
           "actions": {
-            "CreateCertificate": {
-              "type": "Function",
-              "inputs": {
-                "body": {
-                  "AttemptID": 100,
-                  "ScoreInPercentage": "@triggerBody()?['Score']"
-                },
-                "function": {
-                  "id": "/subscriptions/b180251d-6327-4334-ae6f-f858dfd92b4c/resourceGroups/tptest/providers/Microsoft.Web/sites/quizcert/functions/CreateCertificate"
-                }
-              },
-              "runAfter": {}
-            },
             "Response": {
               "type": "Response",
               "inputs": {
                 "statusCode": 200,
                 "body": {
-                  "URL": "@{body('CreateCertificate')['certificateUrl']}"
+                  "DiplomaUrl": "https://function4df513499566.blob.core.windows.net/gab2017shared/diploma.png"
                 }
               },
-              "runAfter": {
-                "CreateCertificate": [
-                  "Succeeded"
-                ]
-              }
+              "runAfter": {}
             }
           },
           "parameters": {},
