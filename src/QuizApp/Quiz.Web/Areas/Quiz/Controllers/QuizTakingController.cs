@@ -133,8 +133,11 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             var model = QuizTakingCompleteViewModel.MapFromDataModel(quizTaking);
             LoadRelationshipProperties(model);
 
-            // TODO: Trigger a Logic App workflow for diploma-generation and score calculation
-
+            // TODO - Assignment 3: Trigger a Logic App workflow for diploma-generation
+            // - Use a synchronous or webhook approach to fetch the Diploma.json from the workflow containing a DiplomaUrl.
+            // - Use a hard-coded path to a sample image in DiplomaUrl to start with.
+            // - Display the image in DiplomaUrl in the QuizCompleted-view.
+            
             return View("QuizCompleted", model);
         }
 
