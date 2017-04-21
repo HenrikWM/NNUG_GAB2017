@@ -26,6 +26,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Domain", "20 - Domain"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 - Infrastructure", "30 - Infrastructure", "{45C52119-7AB2-498B-84DD-560BCEC223BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80 - Example files", "80 - Example files", "{56B398E3-A0C6-4977-8D1B-3C99678830DF}"
+	ProjectSection(SolutionItems) = preProject
+		Diploma.json = Diploma.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Workflow", "40 - Workflow", "{807152C1-F5B3-4881-B04D-D9BFD989C027}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Quiz.Workflows", "Quiz.Workflows\Quiz.Workflows.deployproj", "{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +61,10 @@ Global
 		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +75,6 @@ Global
 		{2DBAB805-E02D-495A-B8EF-4356AF285E60} = {DBA455D6-EEE6-4A3F-97A6-60DA314D7772}
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
 		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B} = {807152C1-F5B3-4881-B04D-D9BFD989C027}
 	EndGlobalSection
 EndGlobal
