@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Application", "10 - Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Deploy", "99 - Deploy", "{3D6BBB5B-A4A6-4D2B-9C6F-A9C0818BC9DD}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\deploy\azuredeploy.json = ..\..\deploy\azuredeploy.json
+		..\..\deploy\azuredeploy.parameters.json = ..\..\deploy\azuredeploy.parameters.json
 		..\..\deploy\deploy.ps1 = ..\..\deploy\deploy.ps1
-		..\..\deploy\parameters.json = ..\..\deploy\parameters.json
-		..\..\deploy\template.json = ..\..\deploy\template.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Domain", "20 - Domain", "{DBA455D6-EEE6-4A3F-97A6-60DA314D7772}"

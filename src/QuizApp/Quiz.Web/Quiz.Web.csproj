@@ -200,6 +200,7 @@
     <Content Include="Areas\Quiz\Views\QuizTaking\QuizCompleted.cshtml" />
     <Content Include="Areas\Scores\Views\web.config" />
     <Content Include="Areas\Scores\Views\HighScores\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\nnug-gab2017-hwm2-quizweb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\quiz-web.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

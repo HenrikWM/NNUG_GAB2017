@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {      
+      "serverfarms_nnug_gab2017_name": {
+        "value": "nnug-gab2017-<your initials>"
+      },
+      "sites_nnug_gab2017_quizweb_name": {
+        "value": "nnug-gab2017-<your initials>-quizweb"
+      }
+    }
+}
