@@ -45,8 +45,8 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script type="text/javascript">
-        //var expectedDiplomaFileUrl = '@ConfigurationManager.AppSettings["QuizAppBlobContainerUrl"]/@Model.ParticipantName' + '.jpg';
-        var expectedDiplomaFileUrl = '@Url.Content("~/Content/Images/dummy-diploma.jpeg")'; // TODO: Remove local testing file
+        // TODO: Read 'diplomaUrl' from the json-file returned from the Logic App workflow
+        var expectedDiplomaFileUrl = '@Url.Content("~/Content/Images/dummy-diploma.jpeg")';
         var calculatedScoreValue = 12345;
 
         function onDiplomaGenerated() {

@@ -133,8 +133,7 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             var model = QuizTakingCompleteViewModel.MapFromDataModel(quizTaking);
             LoadRelationshipProperties(model);
 
-            // TODO:
-            // Trigger Logic App workflow for diploma and score calucation
+            // TODO: Trigger a Logic App workflow for diploma-generation and score calculation
 
             return View("QuizCompleted", model);
         }
