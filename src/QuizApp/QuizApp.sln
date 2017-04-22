@@ -35,6 +35,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Workflow", "40 - Workf
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Quiz.Workflows", "Quiz.Workflows\Quiz.Workflows.deployproj", "{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50 - Functions", "50 - Functions", "{20693B97-281C-4A9C-B85E-0673F0034FA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiplomaFunction", "DiplomaFunction", "{BA9110FC-8572-40A6-A1A8-2830CD582ABA}"
+	ProjectSection(SolutionItems) = preProject
+		Quiz.Functions\DiplomaFunction\2017-logo-800x540-Pokal.png = Quiz.Functions\DiplomaFunction\2017-logo-800x540-Pokal.png
+		Quiz.Functions\DiplomaFunction\2017-logo-800x540.png = Quiz.Functions\DiplomaFunction\2017-logo-800x540.png
+		Quiz.Functions\DiplomaFunction\background.csx = Quiz.Functions\DiplomaFunction\background.csx
+		Quiz.Functions\DiplomaFunction\function.json = Quiz.Functions\DiplomaFunction\function.json
+		Quiz.Functions\DiplomaFunction\run.csx = Quiz.Functions\DiplomaFunction\run.csx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quiz.Functions", "Quiz.Functions", "{49110057-EB03-45CC-93C0-294AC2EC3316}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,5 +89,7 @@ Global
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
 		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
 		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B} = {807152C1-F5B3-4881-B04D-D9BFD989C027}
+		{BA9110FC-8572-40A6-A1A8-2830CD582ABA} = {49110057-EB03-45CC-93C0-294AC2EC3316}
+		{49110057-EB03-45CC-93C0-294AC2EC3316} = {20693B97-281C-4A9C-B85E-0673F0034FA0}
 	EndGlobalSection
 EndGlobal
