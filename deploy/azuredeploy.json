@@ -14,7 +14,6 @@
   "variables": {},
   "resources": [    
     {
-      "comments": "Generalized from resource: '/subscriptions/233f5e0e-5e02-47c3-b6fa-84737a6089a8/resourceGroups/nnug-gab2017-hwm2/providers/Microsoft.Web/serverfarms/nnug-gab2017-hwm2'.",
       "type": "Microsoft.Web/serverfarms",
       "sku": {
         "name": "F1",
@@ -34,15 +33,11 @@
       "dependsOn": []
     },
     {
-      "comments": "Generalized from resource: '/subscriptions/233f5e0e-5e02-47c3-b6fa-84737a6089a8/resourceGroups/nnug-gab2017-hwm2/providers/Microsoft.Web/sites/nnug-gab2017-hwm2-quizweb'.",
       "type": "Microsoft.Web/sites",
       "kind": "WebApp",
       "name": "[parameters('sites_nnug_gab2017_quizweb_name')]",
       "apiVersion": "2015-08-01",
       "location": "West Europe",
-      "tags": {
-        "hidden-related:/subscriptions/233f5e0e-5e02-47c3-b6fa-84737a6089a8/resourceGroups/nnug-gab2017-hwm2/providers/Microsoft.Web/serverfarms/nnug-gab2017-hwm2": "empty"
-      },
       "properties": {
         "name": "[parameters('sites_nnug_gab2017_quizweb_name')]",
         "hostNames": [

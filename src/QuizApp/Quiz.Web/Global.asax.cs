@@ -17,7 +17,7 @@ namespace Quiz.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             InMemoryDbConfiguration.Seed();
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<QuizAppEntities, Quiz.DataAccess.Ef.Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<QuizAppEntities, Quiz.DataAccess.Ef.Migrations.Configuration>());
         }
     }
 }
