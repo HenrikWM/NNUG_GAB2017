@@ -10,11 +10,11 @@ namespace Quiz.Web.Areas.Scores.Controllers
 {
     public class HighScoresController : Controller
     {
-        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
-        //private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
+        //private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
 
-        private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
-        //private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
+        //private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
+        private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
 
         public ActionResult Index()
         {

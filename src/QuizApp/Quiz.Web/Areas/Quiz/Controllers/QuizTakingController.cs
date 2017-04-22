@@ -13,17 +13,17 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class QuizTakingController : Controller
     {
-        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
-        //private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
+        //private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
 
-        private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
-        //private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
+        //private readonly IQuizTakingRepository _quizTakingRepository = InMemoryQuizTakingRepository.Instance;
+        private readonly IQuizTakingRepository _quizTakingRepository = new SqlDbQuizTakingRepository();
 
-        private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = InMemoryQuizItemQuestionAnswerRepository.Instance;
-        //private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = new SqlDbQuizItemQuestionAnswerRepository();
+        //private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = InMemoryQuizItemQuestionAnswerRepository.Instance;
+        private readonly IQuizItemQuestionAnswerRepository _quizItemQuestionAnswerRepository = new SqlDbQuizItemQuestionAnswerRepository();
 
-        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
-        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
+        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
 
         public ActionResult Start(int quizItemId)
         {
@@ -133,8 +133,11 @@ namespace Quiz.Web.Areas.Quiz.Controllers
             var model = QuizTakingCompleteViewModel.MapFromDataModel(quizTaking);
             LoadRelationshipProperties(model);
 
-            // TODO: Trigger a Logic App workflow for diploma-generation and score calculation
-
+            // TODO - Assignment 3: Trigger a Logic App workflow for diploma-generation
+            // - Use a synchronous or webhook approach to fetch the Diploma.json from the workflow containing a DiplomaUrl.
+            // - Use a hard-coded path to a sample image in DiplomaUrl to start with.
+            // - Display the image in DiplomaUrl in the QuizCompleted-view.
+            
             return View("QuizCompleted", model);
         }
 

@@ -12,11 +12,11 @@ namespace Quiz.Web.Areas.Quiz.Controllers
 {
     public class ManageQuizItemQuestionsController : Controller
     {
-        private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
-        //private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
+        //private readonly IQuizItemRepository _quizItemRepository = InMemoryQuizItemRepository.Instance;
+        private readonly IQuizItemRepository _quizItemRepository = new SqlDbQuizItemRepository();
         
-        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
-        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
+        //private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = InMemoryQuizItemQuestionRepository.Instance;
+        private readonly IQuizItemQuestionRepository _quizItemQuestionRepository = new SqlDbQuizItemQuestionRepository();
 
         public ActionResult Index(int quizItemId)
         {
