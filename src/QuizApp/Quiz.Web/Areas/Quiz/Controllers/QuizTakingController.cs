@@ -4,7 +4,6 @@ using System.Net;
 using System.Web.Mvc;
 using Quiz.Core.Quiz;
 using Quiz.DataAccess.Abstractions.Quiz;
-using Quiz.DataAccess.Ef.Quiz.SqlDb;
 using Quiz.DataAccess.InMemory.Quiz.InMemory;
 using Quiz.Web.Areas.Quiz.Models;
 using WebGrease.Css.Extensions;

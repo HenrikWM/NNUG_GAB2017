@@ -245,10 +245,6 @@
       <Project>{C4F71F86-894C-45DF-9E2C-F334B09C2098}</Project>
       <Name>Quiz.DataAccess.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quiz.DataAccess.Ef\Quiz.DataAccess.Ef.csproj">
-      <Project>{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}</Project>
-      <Name>Quiz.DataAccess.Ef</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Quiz.DataAccess\Quiz.DataAccess.InMemory.csproj">
       <Project>{1F2A31E3-15C3-4B35-B676-3DAFB308A85A}</Project>
       <Name>Quiz.DataAccess.InMemory</Name>
