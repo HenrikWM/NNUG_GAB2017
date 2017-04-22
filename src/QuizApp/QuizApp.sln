@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.Core", "QuizApp.Core\Q
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess.Abstractions", "Quiz.DataAccess.Abstractions\Quiz.DataAccess.Abstractions.csproj", "{C4F71F86-894C-45DF-9E2C-F334B09C2098}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.DataAccess.Ef", "Quiz.DataAccess.Ef\Quiz.DataAccess.Ef.csproj", "{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Application", "10 - Application", "{CC662C68-6B0B-452A-A54C-D0DCBF90BC31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99 - Deploy", "99 - Deploy", "{3D6BBB5B-A4A6-4D2B-9C6F-A9C0818BC9DD}"
@@ -31,7 +33,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "80 - Example files", "80 - 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 - Workflow", "40 - Workflow", "{807152C1-F5B3-4881-B04D-D9BFD989C027}"
 EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Quiz.Workflows", "Quiz.Workflows\Quiz.Workflows.deployproj", "{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50 - Functions", "50 - Functions", "{20693B97-281C-4A9C-B85E-0673F0034FA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiplomaFunction", "DiplomaFunction", "{BA9110FC-8572-40A6-A1A8-2830CD582ABA}"
+	ProjectSection(SolutionItems) = preProject
+		Quiz.Functions\DiplomaFunction\2017-logo-800x540-Pokal.png = Quiz.Functions\DiplomaFunction\2017-logo-800x540-Pokal.png
+		Quiz.Functions\DiplomaFunction\2017-logo-800x540.png = Quiz.Functions\DiplomaFunction\2017-logo-800x540.png
+		Quiz.Functions\DiplomaFunction\background.csx = Quiz.Functions\DiplomaFunction\background.csx
+		Quiz.Functions\DiplomaFunction\function.json = Quiz.Functions\DiplomaFunction\function.json
+		Quiz.Functions\DiplomaFunction\run.csx = Quiz.Functions\DiplomaFunction\run.csx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quiz.Functions", "Quiz.Functions", "{49110057-EB03-45CC-93C0-294AC2EC3316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +70,14 @@ Global
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +87,9 @@ Global
 		{1F2A31E3-15C3-4B35-B676-3DAFB308A85A} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
 		{2DBAB805-E02D-495A-B8EF-4356AF285E60} = {DBA455D6-EEE6-4A3F-97A6-60DA314D7772}
 		{C4F71F86-894C-45DF-9E2C-F334B09C2098} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
+		{6E2263E6-BA61-41A3-A869-8C0ADF15BD81} = {45C52119-7AB2-498B-84DD-560BCEC223BD}
+		{D91374AA-F8E5-4B28-91A5-4EE9B7C3EB6B} = {807152C1-F5B3-4881-B04D-D9BFD989C027}
+		{BA9110FC-8572-40A6-A1A8-2830CD582ABA} = {49110057-EB03-45CC-93C0-294AC2EC3316}
+		{49110057-EB03-45CC-93C0-294AC2EC3316} = {20693B97-281C-4A9C-B85E-0673F0034FA0}
 	EndGlobalSection
 EndGlobal
